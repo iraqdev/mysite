@@ -26,6 +26,6 @@ PORT = int(os.environ.get('PORT', 5000))  # مهم لـ Render
 
 # إعدادات الأمان
 MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # حد أقصى 16MB للملفات
-SESSION_COOKIE_SECURE = True  # كوكيز آمن
+SESSION_COOKIE_SECURE = False  # كوكيز آمن (False لـ Render)
 SESSION_COOKIE_HTTPONLY = True  # منع الوصول عبر JavaScript
 PERMANENT_SESSION_LIFETIME = 1800  # انتهاء الجلسة بعد 30 دقيقة
