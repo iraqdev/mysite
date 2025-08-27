@@ -130,11 +130,6 @@ def send_message():
 # حماية إضافية
 @app.before_request
 def before_request():
-    # منع الوصول من IPs مشبوهة
-    blocked_ips = ['127.0.0.1', 'localhost']  # يمكن إضافة IPs أخرى
-    if request.remote_addr in blocked_ips:
-        return "Access Denied", 403
-    
     # منع الوصول لملفات معينة
     if request.path.startswith('/.git') or request.path.startswith('/config'):
         return "Access Denied", 403
