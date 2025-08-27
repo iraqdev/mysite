@@ -10,7 +10,7 @@ app.secret_key = config.SECRET_KEY
 
 # إعدادات الأمان
 app.config['MAX_CONTENT_LENGTH'] = config.MAX_CONTENT_LENGTH
-app.config['SESSION_COOKIE_SECURE'] = config.SESSION_COOKIE_SECURE
+app.config['SESSION_COOKIE_SECURE'] = False  # False لـ Render
 app.config['SESSION_COOKIE_HTTPONLY'] = config.SESSION_COOKIE_HTTPONLY
 app.config['PERMANENT_SESSION_LIFETIME'] = config.PERMANENT_SESSION_LIFETIME
 
@@ -130,11 +130,6 @@ def send_message():
 # حماية إضافية
 @app.before_request
 def before_request():
-    # منع الوصول من IPs مشبوهة
-    blocked_ips = ['127.0.0.1', 'localhost']  # يمكن إضافة IPs أخرى
-    if request.remote_addr in blocked_ips:
-        return "Access Denied", 403
-    
     # منع الوصول لملفات معينة
     if request.path.startswith('/.git') or request.path.startswith('/config'):
         return "Access Denied", 403
