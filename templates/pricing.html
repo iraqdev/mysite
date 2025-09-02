@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التسعير - الدرع التقني للتدريب والتطوير</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">الدرع التقني</a>
+            <ul class="nav-links">
+                <li><a href="/">الرئيسية</a></li>
+                <li><a href="/pricing">التسعير</a></li>
+                <li><a href="/contact">التواصل</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <!-- Header Section -->
+            <section class="hero">
+                <h1>خطط التسعير</h1>
+                <p>اختر الخطة المناسبة لاحتياجاتك التقنية</p>
+            </section>
+
+            <!-- Pricing Cards -->
+            <section class="pricing-section">
+                <div class="pricing-grid">
+                    <!-- Basic Plan -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>الخطة الأساسية</h3>
+                            <div class="price">
+                                <span class="currency">$</span>
+                                <span class="amount">299</span>
+                                <span class="period">/مشروع</span>
+                            </div>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> موقع ويب بسيط (5 صفحات)</li>
+                                <li><i class="fas fa-check"></i> تصميم متجاوب</li>
+                                <li><i class="fas fa-check"></i> استضافة لمدة 6 أشهر</li>
+                                <li><i class="fas fa-check"></i> دعم فني لمدة شهر</li>
+                                <li><i class="fas fa-check"></i> شهادة SSL</li>
+                            </ul>
+                        </div>
+                        <a href="/contact" class="pricing-btn">اختر هذه الخطة</a>
+                    </div>
+
+                    <!-- Professional Plan -->
+                    <div class="pricing-card featured">
+                        <div class="popular-badge">الأكثر شعبية</div>
+                        <div class="pricing-header">
+                            <h3>الخطة المهنية</h3>
+                            <div class="price">
+                                <span class="currency">$</span>
+                                <span class="amount">799</span>
+                                <span class="period">/مشروع</span>
+                            </div>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> موقع ويب متقدم (15 صفحة)</li>
+                                <li><i class="fas fa-check"></i> تطبيق ويب تفاعلي</li>
+                                <li><i class="fas fa-check"></i> قاعدة بيانات</li>
+                                <li><i class="fas fa-check"></i> استضافة لمدة سنة</li>
+                                <li><i class="fas fa-check"></i> دعم فني لمدة 3 أشهر</li>
+                                <li><i class="fas fa-check"></i> تحسين محركات البحث</li>
+                                <li><i class="fas fa-check"></i> نسخ احتياطية</li>
+                            </ul>
+                        </div>
+                        <a href="/contact" class="pricing-btn">اختر هذه الخطة</a>
+                    </div>
+
+                    <!-- Enterprise Plan -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>الخطة المؤسسية</h3>
+                            <div class="price">
+                                <span class="currency">$</span>
+                                <span class="amount">1,999</span>
+                                <span class="period">/مشروع</span>
+                            </div>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> موقع ويب شامل</li>
+                                <li><i class="fas fa-check"></i> تطبيق موبايل</li>
+                                <li><i class="fas fa-check"></i> نظام إدارة متقدم</li>
+                                <li><i class="fas fa-check"></i> استضافة لمدة سنتين</li>
+                                <li><i class="fas fa-check"></i> دعم فني لمدة سنة</li>
+                                <li><i class="fas fa-check"></i> تحليلات متقدمة</li>
+                                <li><i class="fas fa-check"></i> أمان متقدم</li>
+                                <li><i class="fas fa-check"></i> تدريب فريق العمل</li>
+                            </ul>
+                        </div>
+                        <a href="/contact" class="pricing-btn">اختر هذه الخطة</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Training Services -->
+            <section class="training-section">
+                <h2>خدمات التدريب والتطوير</h2>
+                <div class="training-grid">
+                    <div class="training-card">
+                        <i class="fas fa-laptop-code fa-3x"></i>
+                        <h3>تدريب البرمجة</h3>
+                        <p>دورات تدريبية في البرمجة والتطوير</p>
+                        <div class="training-price">$199/شهر</div>
+                    </div>
+                    <div class="training-card">
+                        <i class="fas fa-mobile-alt fa-3x"></i>
+                        <h3>تطوير التطبيقات</h3>
+                        <p>تعلم تطوير تطبيقات الهاتف المحمول</p>
+                        <div class="training-price">$299/شهر</div>
+                    </div>
+                    <div class="training-card">
+                        <i class="fas fa-brain fa-3x"></i>
+                        <h3>الذكاء الاصطناعي</h3>
+                        <p>دورات في الذكاء الاصطناعي والتعلم الآلي</p>
+                        <div class="training-price">$399/شهر</div>
+                    </div>
+                    <div class="training-card">
+                        <i class="fas fa-cogs fa-3x"></i>
+                        <h3>الأجهزة الذكية</h3>
+                        <p>تصميم وتطوير الأجهزة الذكية</p>
+                        <div class="training-price">$499/شهر</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Custom Solutions -->
+            <section class="custom-section">
+                <div class="custom-content">
+                    <h2>حلول مخصصة</h2>
+                    <p>نقدم حلول تقنية مخصصة حسب احتياجاتك الخاصة</p>
+                    <div class="custom-features">
+                        <div class="custom-feature">
+                            <i class="fas fa-tools"></i>
+                            <h4>تطوير الأجهزة</h4>
+                            <p>تصميم وتطوير أجهزة ذكية مخصصة</p>
+                        </div>
+                        <div class="custom-feature">
+                            <i class="fas fa-network-wired"></i>
+                            <h4>أنظمة الشبكات</h4>
+                            <p>تطوير أنظمة شبكات متقدمة</p>
+                        </div>
+                        <div class="custom-feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>الأمان السيبراني</h4>
+                            <p>حلول أمنية متقدمة</p>
+                        </div>
+                    </div>
+                    <a href="/contact" class="custom-btn">اطلب عرض سعر مخصص</a>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>الدرع التقني للتدريب والتطوير</h4>
+                    <p>فريق DNZ Team - نبتكر المستقبل</p>
+                </div>
+                <div class="footer-section">
+                    <h4>روابط مهمة</h4>
+                    <ul class="footer-links">
+                        <li><a href="/pricing">التسعير</a></li>
+                        <li><a href="/contact">التواصل</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>الشروط والسياسات</h4>
+                    <ul class="footer-links">
+                        <li><a href="/terms">شروط الخدمة</a></li>
+                        <li><a href="/privacy">سياسة الخصوصية</a></li>
+                        <li><a href="/refund">سياسة الاسترداد</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 الدرع التقني للتدريب والتطوير. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

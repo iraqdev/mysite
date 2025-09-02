@@ -62,6 +62,22 @@ def contact():
     csrf_token = generate_csrf_token()
     return render_template('contact.html', csrf_token=csrf_token)
 
+@app.route('/pricing')
+def pricing():
+    return render_template('pricing.html')
+
+@app.route('/terms')
+def terms():
+    return render_template('terms.html')
+
+@app.route('/privacy')
+def privacy():
+    return render_template('privacy.html')
+
+@app.route('/refund')
+def refund():
+    return render_template('refund.html')
+
 @app.route('/send_message', methods=['POST'])
 def send_message():
     if request.method == 'POST':
