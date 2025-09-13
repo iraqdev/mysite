@@ -55,7 +55,12 @@ app.use(helmet({
         maxAge: 31536000,
         includeSubDomains: true,
         preload: true
-    }
+    },
+    // Hide server information
+    hidePoweredBy: true,
+    noSniff: true,
+    xssFilter: true,
+    referrerPolicy: { policy: "no-referrer" }
 }));
 
 // Additional security headers
@@ -816,18 +821,18 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 3002;
 const HOST = process.env.HOST || '0.0.0.0'; // Listen on all interfaces
 server.listen(PORT, HOST, () => {
-    console.log(`🚀 خادم HTIT يعمل على ${HOST}:${PORT}`);
-    console.log(`🌐 العنوان العام: ${process.env.RENDER_EXTERNAL_URL || `http://localhost:${PORT}`}`);
-    console.log(`🔒 مستوى الأمان: MAXIMUM`);
-    console.log(`⚡ جاهز لاستقبال الاتصالات`);
-    console.log(`☁️ يعمل على: ${process.env.NODE_ENV || 'development'}`);
+    console.log(`🚀 HTIT Team Server running on ${HOST}:${PORT}`);
+    console.log(`🌐 Public URL: ${process.env.RENDER_EXTERNAL_URL || `http://localhost:${PORT}`}`);
+    console.log(`🔒 Security Level: MAXIMUM`);
+    console.log(`⚡ Ready for connections`);
+    console.log(`☁️ Environment: ${process.env.NODE_ENV || 'development'}`);
 });
 
 // Graceful shutdown
 process.on('SIGTERM', () => {
-    console.log('🛑 إيقاف الخادم...');
+    console.log('🛑 HTIT Team Server shutting down...');
     server.close(() => {
-        console.log('✅ تم إيقاف الخادم بنجاح');
+        console.log('✅ HTIT Team Server stopped successfully');
         process.exit(0);
     });
 });

@@ -1,7 +1,7 @@
 {
-  "name": "htit-chat-server",
+  "name": "htit-team-chat-server",
   "version": "1.0.0",
-  "description": "HTIT Global Hacking Team - Advanced Chat Server",
+  "description": "HTIT Team - Advanced Chat Server",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -15,7 +15,7 @@
     "encryption",
     "socket.io"
   ],
-  "author": "HTIT Global Hacking Team",
+  "author": "HTIT Team",
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",

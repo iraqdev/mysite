@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: htit-chat-server
+    name: htit-team-chat-server
     env: node
     plan: free
     buildCommand: npm install
