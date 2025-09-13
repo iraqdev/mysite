@@ -1,0 +1,444 @@
+/* HTITI Global Hacking Team - Advanced Styling */
+
+/* Additional Matrix Rain Effect */
+@keyframes matrixRain {
+    0% { transform: translateY(-100vh); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+}
+
+.matrix-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -2;
+    overflow: hidden;
+}
+
+.matrix-column {
+    position: absolute;
+    top: -100vh;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: #00ff00;
+    opacity: 0.1;
+    animation: matrixRain 10s linear infinite;
+}
+
+/* Glitch Effect */
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+.glitch-effect {
+    animation: glitch 0.3s infinite;
+}
+
+/* Terminal Cursor */
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.terminal-cursor::after {
+    content: '_';
+    animation: blink 1s infinite;
+    color: #00ff00;
+}
+
+/* Hacker Typing Effect */
+@keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+.typewriter {
+    overflow: hidden;
+    border-right: 2px solid #00ff00;
+    white-space: nowrap;
+    animation: typewriter 3s steps(40, end);
+}
+
+/* Neon Glow Effects */
+.neon-glow {
+    text-shadow: 
+        0 0 5px currentColor,
+        0 0 10px currentColor,
+        0 0 15px currentColor,
+        0 0 20px currentColor;
+}
+
+.neon-red {
+    color: #ff0000;
+    text-shadow: 
+        0 0 5px #ff0000,
+        0 0 10px #ff0000,
+        0 0 15px #ff0000,
+        0 0 20px #ff0000;
+}
+
+.neon-green {
+    color: #00ff00;
+    text-shadow: 
+        0 0 5px #00ff00,
+        0 0 10px #00ff00,
+        0 0 15px #00ff00,
+        0 0 20px #00ff00;
+}
+
+/* Scan Line Effect */
+@keyframes scanline {
+    0% { transform: translateY(-100vh); }
+    100% { transform: translateY(100vh); }
+}
+
+.scanline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00ff00, transparent);
+    animation: scanline 3s linear infinite;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+/* Digital Noise */
+@keyframes noise {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+.digital-noise {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(0, 255, 0, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 0, 0, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(0, 255, 0, 0.02) 0%, transparent 50%);
+    animation: noise 0.1s infinite;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Terminal Window */
+.terminal-window {
+    background: rgba(0, 0, 0, 0.95);
+    border: 2px solid #00ff00;
+    border-radius: 5px;
+    box-shadow: 
+        0 0 20px rgba(0, 255, 0, 0.3),
+        inset 0 0 20px rgba(0, 255, 0, 0.1);
+    position: relative;
+}
+
+.terminal-window::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 0, 0.03) 2px,
+        rgba(0, 255, 0, 0.03) 4px
+    );
+    pointer-events: none;
+}
+
+/* Hacker Console */
+.hacker-console {
+    font-family: 'Courier New', monospace;
+    background: #000;
+    color: #00ff00;
+    border: 1px solid #00ff00;
+    padding: 10px;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+/* Security Badge */
+.security-badge {
+    display: inline-block;
+    background: linear-gradient(45deg, #ff0000, #cc0000);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+    animation: pulse 2s infinite;
+}
+
+/* Warning Alert */
+.warning-alert {
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid #ff0000;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+    color: #ff0000;
+    font-family: 'Courier New', monospace;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+}
+
+/* Success Alert */
+.success-alert {
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid #00ff00;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+}
+
+/* Loading Spinner Advanced */
+.advanced-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #333;
+    border-top: 3px solid #00ff00;
+    border-right: 3px solid #ff0000;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+/* Hacker Button */
+.hacker-btn {
+    background: linear-gradient(45deg, #000, #333);
+    border: 2px solid #00ff00;
+    color: #00ff00;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hacker-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.hacker-btn:hover::before {
+    left: 100%;
+}
+
+.hacker-btn:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Terminal Input */
+.terminal-input {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #00ff00;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    padding: 5px 0;
+    outline: none;
+    width: 100%;
+}
+
+.terminal-input:focus {
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+/* Data Stream Effect */
+@keyframes dataStream {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100vw); }
+}
+
+.data-stream {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #00ff00, transparent);
+    animation: dataStream 4s linear infinite;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Hacker Grid */
+.hacker-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(0, 255, 0, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 0, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Cyberpunk Border */
+.cyber-border {
+    position: relative;
+    border: 2px solid #00ff00;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.cyber-border::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #00ff00, #ff0000, #00ff00);
+    border-radius: 12px;
+    z-index: -1;
+    animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Hacker Text Effect */
+.hacker-text {
+    font-family: 'Courier New', monospace;
+    color: #00ff00;
+    text-shadow: 0 0 10px #00ff00;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Terminal Prompt */
+.terminal-prompt::before {
+    content: 'root@htiti:~$ ';
+    color: #00ff00;
+    font-weight: bold;
+}
+
+/* Security Level Indicator */
+.security-level {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.security-level.maximum {
+    background: #ff0000;
+    color: white;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.security-level.high {
+    background: #ff6600;
+    color: white;
+    box-shadow: 0 0 10px rgba(255, 102, 0, 0.5);
+}
+
+.security-level.medium {
+    background: #ffcc00;
+    color: black;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+}
+
+/* Hacker Status */
+.hacker-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #00ff00;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation: blink 1s infinite;
+}
+
+.status-dot.online {
+    background: #00ff00;
+    box-shadow: 0 0 10px #00ff00;
+}
+
+.status-dot.offline {
+    background: #ff0000;
+    box-shadow: 0 0 10px #ff0000;
+}
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+    .matrix-column {
+        font-size: 10px;
+    }
+    
+    .hacker-text {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+    
+    .terminal-window {
+        margin: 10px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .matrix-bg,
+    .matrix-rain,
+    .scanline,
+    .digital-noise,
+    .data-stream,
+    .hacker-grid {
+        display: none;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+}

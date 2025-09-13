@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTITI - Global Hacking Team</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 255, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(255, 0, 0, 0.05) 0%, transparent 50%),
+                linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0d0d0d 100%);
+            color: #00ff00;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('logo.png');
+            background-size: 300px 300px;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.03;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Matrix Effect Background */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(90deg, #000000, #1a1a1a, #000000);
+            border-bottom: 2px solid #ff0000;
+            padding: 15px 0;
+            box-shadow: 0 0 20px #ff0000;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 2px,
+                rgba(255, 0, 0, 0.1) 2px,
+                rgba(255, 0, 0, 0.1) 4px
+            );
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 4px solid #ff0000;
+            box-shadow: 0 0 25px #ff0000, 0 0 50px rgba(255, 0, 0, 0.3);
+            animation: pulse 2s infinite;
+            filter: drop-shadow(0 0 10px #ff0000);
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 35px #ff0000, 0 0 70px rgba(255, 0, 0, 0.5);
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 25px #ff0000, 0 0 50px rgba(255, 0, 0, 0.3); }
+            50% { box-shadow: 0 0 35px #ff0000, 0 0 70px rgba(255, 0, 0, 0.5); }
+        }
+
+        .team-name {
+            font-size: 2.5em;
+            font-weight: bold;
+            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+            letter-spacing: 3px;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        .admin-toggle-btn {
+            background: linear-gradient(45deg, #ff0000, #cc0000);
+            border: 2px solid #ff0000;
+            border-radius: 8px;
+            color: white;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+        }
+
+        .admin-toggle-btn:hover {
+            background: linear-gradient(45deg, #cc0000, #ff0000);
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .admin-toggle-btn:active {
+            transform: translateY(0);
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; }
+            to { text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00; }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Chat Container */
+        .chat-container {
+            background: rgba(0, 0, 0, 0.95);
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+            margin: 20px 0;
+            overflow: hidden;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .chat-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 255, 0, 0.05) 2px,
+                rgba(0, 255, 0, 0.05) 4px
+            );
+            pointer-events: none;
+        }
+
+        .chat-header {
+            background: linear-gradient(90deg, #000000, #1a1a1a);
+            padding: 15px;
+            border-bottom: 1px solid #00ff00;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-title {
+            font-size: 1.5em;
+            color: #ff0000;
+            text-shadow: 0 0 5px #ff0000;
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            background: #00ff00;
+            border-radius: 50%;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+
+        .messages-container {
+            height: 400px;
+            overflow-y: auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .message {
+            margin: 10px 0;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border-left: 3px solid #00ff00;
+            background: rgba(0, 255, 0, 0.1);
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .username {
+            color: #ff0000;
+            font-weight: bold;
+            text-shadow: 0 0 5px #ff0000;
+        }
+
+        .timestamp {
+            color: #888;
+            font-size: 0.8em;
+        }
+
+        .message-content {
+            color: #00ff00;
+            line-height: 1.4;
+        }
+
+        /* Input Area */
+        .input-container {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            border-top: 1px solid #00ff00;
+            backdrop-filter: blur(5px);
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .message-input {
+            flex: 1;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00ff00;
+            border-radius: 5px;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .message-input:focus {
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+            border-color: #00ff00;
+        }
+
+        .message-input::placeholder {
+            color: #666;
+        }
+
+        .send-btn {
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #ff0000, #cc0000);
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .send-btn:hover {
+            background: linear-gradient(45deg, #cc0000, #ff0000);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .send-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.95);
+            border: 2px solid #ff0000;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+            z-index: 1000;
+            display: none;
+            max-width: 350px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .admin-panel.active {
+            display: block;
+        }
+
+        .admin-title {
+            color: #ff0000;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 0 0 5px #ff0000;
+            border-bottom: 1px solid #ff0000;
+            padding-bottom: 10px;
+        }
+
+        .admin-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 0, 0, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+        }
+
+        .admin-section h4 {
+            color: #00ff00;
+            font-size: 1em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 3px #00ff00;
+        }
+
+        .admin-btn {
+            display: block;
+            width: 100%;
+            margin: 8px 0;
+            padding: 10px 15px;
+            background: rgba(255, 0, 0, 0.2);
+            border: 1px solid #ff0000;
+            border-radius: 5px;
+            color: #ff0000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .admin-btn:hover {
+            background: rgba(255, 0, 0, 0.4);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .admin-input {
+            width: 100%;
+            padding: 8px 12px;
+            margin: 5px 0;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #ff0000;
+            border-radius: 5px;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+
+        .admin-input:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        .stats {
+            color: #00ff00;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .stats span {
+            color: #ff0000;
+            font-weight: bold;
+        }
+
+        /* Security Indicators */
+        .security-status {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 12px;
+            color: #00ff00;
+        }
+
+        /* Donation Section */
+        .donation-section {
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #ff0000;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .donation-title {
+            color: #ff0000;
+            font-size: 1.5em;
+            text-align: center;
+            margin-bottom: 25px;
+            text-shadow: 0 0 10px #ff0000;
+            border-bottom: 2px solid #ff0000;
+            padding-bottom: 10px;
+        }
+
+        .wallets-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .wallet-item {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wallet-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .wallet-item:hover::before {
+            left: 100%;
+        }
+
+        .wallet-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3);
+            border-color: #ff0000;
+        }
+
+        .wallet-icon {
+            font-size: 2em;
+            color: #ff0000;
+            text-shadow: 0 0 10px #ff0000;
+            min-width: 50px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .wallet-info {
+            flex: 1;
+        }
+
+        .wallet-name {
+            color: #00ff00;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 8px;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        .wallet-address {
+            color: #ffffff;
+            font-size: 0.9em;
+            font-family: 'Courier New', monospace;
+            word-break: break-all;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 8px 12px;
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .copy-btn {
+            background: rgba(0, 255, 0, 0.2);
+            border: 1px solid #00ff00;
+            border-radius: 8px;
+            color: #00ff00;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            min-width: 50px;
+        }
+
+        .copy-btn:hover {
+            background: rgba(0, 255, 0, 0.4);
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+            transform: scale(1.1);
+        }
+
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            color: #00ff00;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 2px solid #333;
+            border-top: 2px solid #00ff00;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .team-name {
+                font-size: 1.8em;
+            }
+            
+            .messages-container {
+                height: 300px;
+            }
+            
+            .admin-panel {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin: 20px 0;
+            }
+        }
+
+        /* Custom Scrollbar */
+        .messages-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .messages-container::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .messages-container::-webkit-scrollbar-thumb {
+            background: #00ff00;
+            border-radius: 4px;
+        }
+
+        .messages-container::-webkit-scrollbar-thumb:hover {
+            background: #00cc00;
+        }
+    </style>
+</head>
+<body>
+    <!-- Matrix Background Effect -->
+    <div class="matrix-bg" id="matrixBg"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="logo.png" alt="HTITI Logo" class="logo">
+                <h1 class="team-name">HTIT</h1>
+                <button id="adminToggle" class="admin-toggle-btn">🔧 لوحة الإدارة</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Chat Container -->
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2 class="chat-title">غرفة المحادثة السرية</h2>
+                <div class="status-indicator"></div>
+            </div>
+            
+            <div class="messages-container" id="messagesContainer">
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>جاري الاتصال بالخادم...</p>
+                </div>
+            </div>
+            
+            <div class="input-container">
+                <div class="input-group">
+                    <input type="text" id="messageInput" class="message-input" placeholder="اكتب رسالتك هنا..." maxlength="500">
+                    <button id="sendBtn" class="send-btn">إرسال</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="adminPanel">
+        <h3 class="admin-title">🔧 لوحة الإدارة</h3>
+        
+        <!-- Chat Control -->
+        <div class="admin-section" id="chatControlSection" style="display: none;">
+            <h4>🎯 تحكم المحادثة</h4>
+            <button class="admin-btn" id="toggleChatBtn">إيقاف/تشغيل المحادثة</button>
+            <button class="admin-btn" id="clearMessagesBtn">مسح جميع الرسائل</button>
+            <button class="admin-btn" id="exportChatBtn">تصدير المحادثة</button>
+        </div>
+        
+        <!-- User Management -->
+        <div class="admin-section" id="userManagementSection" style="display: none;">
+            <h4>👥 إدارة المستخدمين</h4>
+            <button class="admin-btn" id="viewUsersBtn">عرض المستخدمين النشطين</button>
+            <button class="admin-btn" id="banUserBtn">حظر مستخدم</button>
+            <button class="admin-btn" id="kickUserBtn">طرد مستخدم</button>
+            <button class="admin-btn" id="muteUserBtn">كتم مستخدم</button>
+        </div>
+        
+        <!-- Statistics -->
+        <div class="admin-section" id="statisticsSection" style="display: none;">
+            <h4>📊 الإحصائيات</h4>
+            <div class="stats">
+                <div>المستخدمون النشطون: <span id="activeUsers">0</span></div>
+                <div>إجمالي الرسائل: <span id="totalMessages">0</span></div>
+                <div>حالة المحادثة: <span id="chatStatus">نشطة</span></div>
+            </div>
+        </div>
+        
+        <!-- Admin Login -->
+        <div class="admin-section" id="adminLoginSection">
+            <h4>🔐 تسجيل دخول الإدارة</h4>
+            <input type="password" id="adminPassword1" placeholder="كلمة المرور الأولى" class="admin-input">
+            <input type="password" id="adminPassword2" placeholder="كلمة المرور الثانية" class="admin-input">
+            <input type="password" id="adminPassword3" placeholder="كلمة المرور الثالثة" class="admin-input">
+            <button class="admin-btn" id="adminLoginBtn">دخول</button>
+            <button class="admin-btn" id="adminLogoutBtn" style="background: rgba(255, 0, 0, 0.3); border-color: #ff0000; display: none;">تسجيل خروج</button>
+        </div>
+    </div>
+
+    <!-- Security Status -->
+    <div class="security-status">
+        <div>🔒 اتصال مشفر</div>
+        <div>🛡️ حماية متقدمة</div>
+        <div>⚡ سرعة عالية</div>
+    </div>
+
+    <!-- Donation Wallets -->
+    <div class="donation-section">
+        <h3 class="donation-title">💰 للتبرع</h3>
+        <div class="wallets-container">
+            <div class="wallet-item">
+                <div class="wallet-icon">Ξ</div>
+                <div class="wallet-info">
+                    <div class="wallet-name">ETH</div>
+                    <div class="wallet-address">0x91fD76D5bFc8f7e3Ab9eed37855d50338AE92D40</div>
+                </div>
+                <button class="copy-btn" onclick="copyToClipboard('0x91fD76D5bFc8f7e3Ab9eed37855d50338AE92D40')">📋</button>
+            </div>
+            
+            <div class="wallet-item">
+                <div class="wallet-icon">₮</div>
+                <div class="wallet-info">
+                    <div class="wallet-name">USDT ERC20</div>
+                    <div class="wallet-address">0x91fD76D5bFc8f7e3Ab9eed37855d50338AE92D40</div>
+                </div>
+                <button class="copy-btn" onclick="copyToClipboard('0x91fD76D5bFc8f7e3Ab9eed37855d50338AE92D40')">📋</button>
+            </div>
+            
+            <div class="wallet-item">
+                <div class="wallet-icon">₿</div>
+                <div class="wallet-info">
+                    <div class="wallet-name">BTC</div>
+                    <div class="wallet-address">bc1ql8f4mp32fcefpa3sh4lqvfe6uzw9jn8f2gxsmg</div>
+                </div>
+                <button class="copy-btn" onclick="copyToClipboard('bc1ql8f4mp32fcefpa3sh4lqvfe6uzw9jn8f2gxsmg')">📋</button>
+            </div>
+            
+            <div class="wallet-item">
+                <div class="wallet-icon">T</div>
+                <div class="wallet-info">
+                    <div class="wallet-name">TRX</div>
+                    <div class="wallet-address">TMRhxTKbe9GhtvcEjLmvY6ZGRNjsYkvv8W</div>
+                </div>
+                <button class="copy-btn" onclick="copyToClipboard('TMRhxTKbe9GhtvcEjLmvY6ZGRNjsYkvv8W')">📋</button>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="security.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
